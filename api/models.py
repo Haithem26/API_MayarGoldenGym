@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 import os
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -22,4 +23,15 @@ class Product(models.Model):
     description = models.TextField()
     image= models.ImageField(upload_to=filepath, null = True, blank= True )
     date_Add = models.DateField()
+
+class User(AbstractUser):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255, unique=True)
+    password = models.CharField(max_length=255)
+    username = None
+
+    USERNAME_FIELD= "email"
+    REQUIRED_FIELDS = []
+
+    
 
