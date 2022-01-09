@@ -1,9 +1,9 @@
 from django.core.checks import messages
 from django.shortcuts import render
-from rest_framework.views import APIView
-from .models import Product, Blog, User
+
+from .models import Product, Blog
 from rest_framework.decorators import api_view
-from.serializers import ProductSerializer, BlogSerializer, UserSerializer
+from.serializers import ProductSerializer, BlogSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -93,11 +93,12 @@ def blog_rud(request, id):
     if request.method == "DELETE":
         blog.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
-    
-
+''' 
 class Register(APIView):
     def post(self, request):
         serializer = UserSerializer(data = request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
+        '''
